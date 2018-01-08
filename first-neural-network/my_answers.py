@@ -99,7 +99,7 @@ class NeuralNetwork(object):
         hidden_error_term = hidden_error.T*hidden_outputs*(1-hidden_outputs)
         
         # Weight step (input to hidden)
-        delta_weights_i_h += self.lr*X.reshape((X.shape[0]))*hidden_error_term
+        delta_weights_i_h += self.lr*X.reshape((X.shape[0],1))*hidden_error_term
         # Weight step (hidden to output)
         delta_weights_h_o += self.lr*(hidden_outputs.reshape((hidden_outputs.shape[0],1)))*output_error_term
 
