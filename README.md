@@ -10,6 +10,8 @@ There are also notebooks used as projects for the Nanodegree program. In the pro
 ## Table Of Contents
 * [bike classification project](https://github.com/tiandiao123/deep_learning/tree/master/first-neural-network)
 
+  In this project, I get to build a neural network from scratch to carry out a prediction problem on a real dataset! By building a neural network from the ground up, we'll have a much better understanding of gradient descent, backpropagation, and other concepts that are important to know before we move to higher level tools such as Tensorflow. We'll also get to see how to apply these networks to solve real prediction problems! For implementaion and the project result, please check the link above!
+
 ### Tutorials
 
 * [Sentiment Analysis with Numpy](https://github.com/udacity/deep-learning/tree/master/sentiment-network): [Andrew Trask](http://iamtrask.github.io/) leads you through building a sentiment analysis model, predicting if some text is positive or negative.
