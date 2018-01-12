@@ -1,4 +1,4 @@
-### student name: Cuiqing Li
+### Student Name: Cuiqing Li
 ### starting time: December 2017
 
 # Deep Learning Nanodegree Foundation
