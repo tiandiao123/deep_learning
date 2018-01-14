@@ -17,6 +17,7 @@ There are also notebooks used as projects for the Nanodegree program. In the pro
   In this project, I will learn how to build a pipeline that can be used within a web or mobile app to process real-world, user-supplied images. Given an image of a dog, my algorithm will identify an estimate of the canine’s breed. If supplied an image of a human, the code will identify the resembling dog breed.
 
 * [TV scripts generator](https://github.com/tiandiao123/deep_learning/tree/master/tv-script-generation)
+
   In this project, I'll generate your own Simpsons TV scripts using RNNs. I'll be using part of the Simpsons dataset of scripts from 27 seasons. The Neural Network I'll build will generate a new TV script for a scene at Moe's Tavern.
 
 ### Tutorials
