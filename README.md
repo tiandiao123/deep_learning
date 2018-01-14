@@ -12,10 +12,12 @@ There are also notebooks used as projects for the Nanodegree program. In the pro
 
   In this project, I get to build a neural network from scratch to carry out a prediction problem on a real dataset! By building a neural network from the ground up, we'll have a much better understanding of gradient descent, backpropagation, and other concepts that are important to know before we move to higher level tools such as Tensorflow. We'll also get to see how to apply these networks to solve real prediction problems! For implementaion and the project result, please check the link above!
 
-
 * [dog breed classifcation using CNN model and transfer learning idea](https://github.com/tiandiao123/deep_learning/tree/master/dog-project)
 
   In this project, I will learn how to build a pipeline that can be used within a web or mobile app to process real-world, user-supplied images. Given an image of a dog, my algorithm will identify an estimate of the canine’s breed. If supplied an image of a human, the code will identify the resembling dog breed.
+
+* [TV scripts generator](https://github.com/tiandiao123/deep_learning/tree/master/tv-script-generation)
+  In this project, I'll generate your own Simpsons TV scripts using RNNs. I'll be using part of the Simpsons dataset of scripts from 27 seasons. The Neural Network I'll build will generate a new TV script for a scene at Moe's Tavern.
 
 ### Tutorials
 
