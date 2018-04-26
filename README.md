@@ -22,7 +22,7 @@ There are also notebooks used as projects for the Nanodegree program. In the pro
 
 * [Face Generation](https://github.com/tiandiao123/deep_learning/blob/master/face_generation/dlnd_face_generation.ipynb)
 
-In this project, I'll use generative adversarial networks to generate new images of faces.
+  In this project, I'll use generative adversarial networks to generate new images of faces.
 
 ### Tutorials
 
