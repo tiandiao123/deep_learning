@@ -20,6 +20,9 @@ There are also notebooks used as projects for the Nanodegree program. In the pro
 
   In this project, I'll generate your own Simpsons TV scripts using RNNs. I'll be using part of the Simpsons dataset of scripts from 27 seasons. The Neural Network I'll build will generate a new TV script for a scene at Moe's Tavern.
 
+* [Face Generation](https://github.com/tiandiao123/deep_learning/blob/master/face_generation/dlnd_face_generation.ipynb)
+In this project, you'll use generative adversarial networks to generate new images of faces.
+
 ### Tutorials
 
 * [Sentiment Analysis with Numpy](https://github.com/udacity/deep-learning/tree/master/sentiment-network): [Andrew Trask](http://iamtrask.github.io/) leads you through building a sentiment analysis model, predicting if some text is positive or negative.
