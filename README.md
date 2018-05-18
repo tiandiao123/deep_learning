@@ -24,6 +24,10 @@ There are also notebooks used as projects for the Nanodegree program. In the pro
 
   In this project, I'll use generative adversarial networks to generate new images of faces.
 
+* [Quadrotor Helicopter](https://github.com/tiandiao123/deep_learning/tree/master/RL-Quadcopter-2)
+
+  In this project, I am going to use RL algorithms to let Helicopter fly by itself.
+
 ### Tutorials
 
 * [Sentiment Analysis with Numpy](https://github.com/udacity/deep-learning/tree/master/sentiment-network): [Andrew Trask](http://iamtrask.github.io/) leads you through building a sentiment analysis model, predicting if some text is positive or negative.
