@@ -117,7 +117,7 @@ def model_opt(d_loss, g_loss, learning_rate, beta1):
 
 
 
-def show_generator_output(sess, n_images, input_z, out_channel_dim, image_mode):
+def show_generator_output(sess, n_images, input_z, out_channel_dim, image_mode, step):
     """
     Show example output for the generator
     :param sess: TensorFlow session
@@ -135,7 +135,7 @@ def show_generator_output(sess, n_images, input_z, out_channel_dim, image_mode):
         feed_dict={input_z: example_z})
 
     images_grid = helper.images_square_grid(samples, image_mode)
-    images_grid.save("./images_examples/step_" + str(count) + ".png")
+    images_grid.save("./images_examples/step_" + str(step) + ".png")
 
 
 
@@ -163,10 +163,12 @@ def train(epoch_count, batch_size, z_dim, learning_rate, beta1, get_batches, dat
 						"The No. {} steps loss_g is {}".format(step,train_loss_g))
 
 				if step%100 == 0:
-					count = step
-					show_generator_output(sess, show_n_images, input_z, data_shape[3], data_image_mode)
+					show_generator_output(sess, show_n_images, input_z, data_shape[3], data_image_mode, step)
 
-			_ = sess.run(g_optimizer, feed_dict = {input_real: batch_images, input_z: batch_z, lr: learning_rate})
+				#if step% 50 == 0:
+				_ = sess.run(g_optimizer, feed_dict = {input_real: batch_images, input_z: batch_z, lr: learning_rate})
+
+			#_ = sess.run(g_optimizer, feed_dict = {input_real: batch_images, input_z: batch_z, lr: learning_rate})
 
 
 
@@ -176,7 +178,7 @@ z_dim = 128
 learning_rate = 0.0001
 beta1 = 0.6
 
-epochs = 2
+epochs = 5
 
 
 data_dir = './data'
