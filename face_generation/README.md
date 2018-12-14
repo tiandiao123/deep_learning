@@ -13,3 +13,8 @@ step2: train model:
 ```
 python face_generation_gan.py
 ```
+
+### some final generated images to show:
+![face1](images_examples/step_3100.png)
+
+![face2](images_examples/step_3000.png)
