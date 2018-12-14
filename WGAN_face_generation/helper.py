@@ -132,19 +132,13 @@ def download_extract(database_name, data_path):
     DATASET_CELEBA_NAME = 'celeba'
     DATASET_MNIST_NAME = 'mnist'
 
-    extract_path = ""
-    save_path = ""
-    url = ""
-
     if database_name == DATASET_CELEBA_NAME:
-        print("get here ?")
         url = 'https://s3-us-west-1.amazonaws.com/udacity-dlnfd/datasets/celeba.zip'
         hash_code = '00d2c5bc6d35e252742224ab0c1e8fcb'
         extract_path = os.path.join(data_path, 'img_align_celeba')
         save_path = os.path.join(data_path, 'celeba.zip')
         extract_fn = _unzip
     elif database_name == DATASET_MNIST_NAME:
-        print("here here here ??? ")
         url = 'http://yann.lecun.com/exdb/mnist/train-images-idx3-ubyte.gz'
         hash_code = 'f68b3c2dcbeaaa9fbdd348bbdeb94873'
         extract_path = os.path.join(data_path, 'mnist')
@@ -217,7 +211,7 @@ class Dataset(object):
         while current_index + batch_size <= self.shape[0]:
             data_batch = get_batch(
                 self.data_files[current_index:current_index + batch_size],
-                self.shape[1:3],
+                *self.shape[1:3],
                 self.image_mode)
 
             current_index += batch_size

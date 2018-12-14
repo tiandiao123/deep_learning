@@ -21,6 +21,10 @@
 
   In this project, I'll use generative adversarial networks to generate new images of faces.
 
+* [WGAN Face Generation](https://github.com/tiandiao123/deep_learning/tree/master/WGAN_face_generation)
+  
+  In this project, I implemented a WGAN to generate human faces, and it is an improved version of DCGAN project (previous face generation project)
+
 * [Quadrotor Helicopter](https://github.com/tiandiao123/deep_learning/tree/master/RL-Quadcopter-2)
 
   In this project, I am going to use RL algorithms to let Helicopter fly by itself.
