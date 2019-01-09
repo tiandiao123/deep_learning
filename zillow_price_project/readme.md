@@ -39,14 +39,9 @@ In this method, we first try a simple algorithm for predicting our logerror valu
 
 ![decison_tree](figure1.png)
 
-### method 2: decsion tree plus adaboost algorithms:
+#### method 2: decsion tree plus adaboost algorithms:
+In this case, we need to add ensemble method so that we can improve those models with bad performance and combine with models with good performace. For one thing, it can improve our final model's performance. For another thing, it can avoid overfitiitng. The final mean-saure error is 0.016951678638327763, which is good! 
 ![decison_tree_adaboost](figure2.png)
-
-
-### Benchmark
-In this section, you will need to provide a clearly defined benchmark result or threshold for comparing across performances obtained by your solution. The reasoning behind the benchmark (in the case where it is not an established result) should be discussed. Questions to ask yourself when writing this section:
-- _Has some result or value been provided that acts as a benchmark for measuring performance?_
-- _Is it clear how this result or value was obtained (whether by data or by hypothesis)?_
 
 
 ## III. Methodology
