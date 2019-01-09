@@ -25,7 +25,7 @@ In this project, the data set is huge, and we need to handle it very carefully. 
 
 ### Exploratory Visualization
 Here is the logerror distribution figure:
-![logerror_figure](logerror_figure.png)
+![logerror_figure](correlations.png)
 
 ### Algorithms and Techniques
 In this section, you will need to discuss the algorithms and techniques you intend to use for solving the problem. You should justify the use of each one based on the characteristics of the problem and the problem domain. Questions to ask yourself when writing this section:
