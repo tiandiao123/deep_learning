@@ -36,7 +36,11 @@ Here is correlations between features and logerror:
 ### Algorithms and Techniques
 #### method 1: decision tree regression
 In this method, we first try a simple algorithm for predicting our logerror values. decision tree algorithm basically to choose most optimized feature to decide which category we need to choose so that we can get the most desired predition. Finally. we set the max-depth as 20 since we have over 50 features, but we cut off those unrelated features based on correlations and leave only 18 features in our columns features. Finally, we got a mean square error which is 0.021273486707590866, which is not very satisficatory. But, it is a good start! Here is what looks like when I sample some test data and compare it with my model's predictions
+
 ![decison_tree](figure1.png)
+
+### method 2: decsion tree plus adaboost algorithms:
+![decison_tree_adaboost](figure2.png)
 
 
 ### Benchmark
