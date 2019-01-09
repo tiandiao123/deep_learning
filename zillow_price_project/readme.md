@@ -25,9 +25,11 @@ In this project, the data set is huge, and we need to handle it very carefully. 
 
 ### Exploratory Visualization
 Here is the logerror distribution figure:
+
 ![logerror_figure](logerror_figure.png)
 
 Here is correlations between features and logerror:
+
 ![correlations](correlations.png)
 
 ### Algorithms and Techniques
