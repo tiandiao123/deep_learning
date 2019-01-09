@@ -72,7 +72,7 @@ In this project, the most difficult part for me is that we don't have any clue w
 
 ### Improvement
 After that, we can probably do the following steps to improve our problem. 
-option1: try modern algorithm such as Xgboost whcih is a modern boosting algorithm, and we can use it to improve our model's performance
-Option2: we can try neural network to work on this regression problem. Just view features of data sample as input nodes of our fully-connected neural network, and the throw all of data into the nueral network to try our model. 
-Option3: Add more training data is also a good choice, since our data we use has many missing data, so we cannot guaranteen the realiability of data we use. Thus, before training, we can do some data augumentation or adding more data should be beneficial our training of models!
- 
+option 1: try modern algorithm such as Xgboost whcih is a modern boosting algorithm, and we can use it to improve our model's performance
+Option 2: we can try neural network to work on this regression problem. Just view features of data sample as input nodes of our fully-connected neural network, and the throw all of data into the nueral network to try our model. 
+Option 3: Add more training data is also a good choice, since our data we use has many missing data, so we cannot guaranteen the realiability of data we use. Thus, before training, we can do some data augumentation or adding more data should be beneficial our training of models!
+Option 4: Add more ensemble algorithms to our model should also be working! For example, combining bagging and adaboost should also improve the performance since we randomly select training data can increase our model's flexibility, and so it can help us get a more genralized model. If so, it can used to predict unseen data with more accuracy! 
