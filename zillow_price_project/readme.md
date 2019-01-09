@@ -43,6 +43,10 @@ In this method, we first try a simple algorithm for predicting our logerror valu
 In this case, we need to add ensemble method so that we can improve those models with bad performance and combine with models with good performace. For one thing, it can improve our final model's performance. For another thing, it can avoid overfitiitng. The final mean-saure error is 0.016951678638327763, which is good! 
 ![decison_tree_adaboost](figure2.png)
 
+#### method 3:
+In this case, we can use gradient boosting tree regression algrithm to improve our pure tree regression algorithm. The basical idea behind this algorithm is that we need to improve current model based on current difference bwteen current model's predictions and true logerror values. The issue for this algorithms, it can be over-fitting in some sense, but if we can carefully control the number of steps, it can significally improve the pure tree regression algorithms, the best model of this algorithm we tested has mean square error 0.01599242456077152.
+![gradient_boosting](figure3.png)
+
 
 ## III. Methodology
 _(approx. 3-5 pages)_
