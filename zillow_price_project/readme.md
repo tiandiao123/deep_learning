@@ -29,7 +29,11 @@ logerror = log(zestimate) - log(SalePrice)
 In order to solve the problem above, we need to try several models, and choose the best model to set it as our final solution. Before working on testing our model, clearing data is also important in this case, since we have much noise in our data set including missing data and some miss-calculated data. Then, firstly, we can try some simple regression models such as linear regression and polynomial regression, and use mean square error to see whether it has reasonable performance. After that, we can improve our model by using some more complex models such as decision/random regression tree algorithms. After that, adding normalization to avoid over-fitting is also important in this case. In order to avoid over-fiting, in addition to use some normal methods such as L1/L2 norms, we can try ensemble methods such as bagging, cross-validation method, adaboost and gradient-boosting algorithms to try! Finally, we find both of adabooting decision regression and gradient boosting tree regression algorithms can have good perforamance compared to pure regression algorithms such as decision regression algorithm. 
 
 ### Metrics
-In this project, we need to use mean square error to our metrics. If mean square error is smaller than or equal to 0.02, it should be a good model, otherwise we need to improve it! Also, we need to draw figures to see whether our models' predictions are reasonable! 
+In this project, we set mean square error as our metrics, which is defined as the following:
+```
+   Mean_squre_error = \sum_{1}^{n}{model(input_data) - logerror}/n
+```
+In order to justify a good performance of our model in this case, we are going to try to find a mean square error <= 0.02 indicates a good model of this problem. 
 
 
 ## II. Analysis
