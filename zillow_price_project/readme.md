@@ -34,6 +34,19 @@ In this project, we set mean square error as our metrics, which is defined as th
 
 In order to justify a good performance of our model in this case, we are going to try to find a mean square error <= 0.02 indicates a good model of this problem. 
 
+## LaTeX
+
+The editor converts LaTeX equations in double-dollars `$$`: $$ax^2+bx+c=0$$. All equations are rendered as block equations. If you need inline ones, you can add the prefix `\inline`: $$\inline p={1\over q}$$. But it is a good practice to place big equations on separate lines:
+
+$$x_{1,2} = {-b\pm\sqrt{b^2 - 4ac} \over 2a}.$$
+
+In this case the LaTeX syntax will be highlighted in the source code. You can even add equation numbers (unfortunately there is no automatic numbering and refs support):
+
+$$|\vec{A}|=\sqrt{A_x^2 + A_y^2 + A_z^2}.$$(1)
+
+It is possible to write Cyrillic symbols in `\text` command: $$Q_\text{плавления}>0$$.
+
+One can use matrices:
 
 ## II. Analysis
 
