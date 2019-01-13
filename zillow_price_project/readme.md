@@ -112,6 +112,11 @@ As for paramenter tuning, we mostly focus on the max-depth and the number of fea
 ### Model Evaluation and Validation
 As for all of algorithms, we tested them on our test data after training. As for tree regression algorithm, we have test mean square error 0.021273486707590866. As for adaboost+decision tree algorithm, we have mean square error 0.016951678638327763. As for gradient boosting algorithm, we have mean squre error 0.01599242456077152. 
 
+As for the model the roboustness, for example, we do add some outliers in our training model, and it turned out that adaboost regressiobn tree regression algorithm has strong tolerance for those noise data. Overall, it can still help us achieve good performance compared to pure simple tree regression algorithm
+
+
+### Justification
+Overall, we achive the benchmark we set in the begining, and it means that our model can make test data's mean squre error smaller than 0.02. After drawing some predicted pictures for our test data, we can confirm our benchmark is reasonale, and our model is very strong and robust.   
 
 
 ## V. Conclusion
