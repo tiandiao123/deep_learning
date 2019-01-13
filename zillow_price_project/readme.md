@@ -121,6 +121,15 @@ Overall, we achive the benchmark we set in the begining, and it means that our m
 
 ## V. Conclusion
 
+### free-from visualization
+Here are predicted results' of some of data sample ramdomly selected from test data set. The first figure is tree regression algorithm's performance, and the second picture is the result of adaboost tree regression algorithm, and the third picture is gradient boosting tree regression algorithm's performance.  
+
+![decison_tree](figure1.png)
+
+![decison_tree_adaboost](figure2.png)
+
+![gradient_boosting](figure3.png)
+
 ### Reflection
 In this project, the most difficult part for me is that we don't have any clue which algorithm to choose. Thus, we need to try multiple optential algorithms to test, abd see which algorithm should have best performance. Also, since it is a pure regression problem, so we cannot use some accuracy benchmark to determine whether this algorithm has good performance. The only thing we can do is that we try to minize cost function error(mean squre error we chose in this project), and draw figure to see whether our model has better performance. Also adjusting parameters of the algorithms is also challenging for us since some parameters huge impacts on out model's performance such as learning rate in tree regression algorithm. 
 
