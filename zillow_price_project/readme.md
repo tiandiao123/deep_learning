@@ -7,7 +7,7 @@ Janunary 1st, 2019
 ## I. Review
 
 ### Project Overview
-Zillow’s Zestimate home valuation has shaken up the U.S. real estate industry since first released 11 years ago. “Zestimates” are estimated home values based on 7.5 million statistical and machine learning models that analyze hundreds of data points on each property. And, by continually improving the median margin of error (from 14% at the onset to 5% today), Zillow has since become established as one of the largest, most trusted marketplaces for real estate information in the U.S. and a leading example of impactful machine learning.
+Zillow’s Zestimate home valuation has shaken up the U.S. real estate industry since first released 11 years ago. “Zestimates” are estimated home values based on 7.5 million statistical and machine learning models that analyze hundreds of data points on each property. And, by continually improving the median margin of error (from 14% at the onset to 5% today), Zillow has since become established as one of the largest, most trusted marketplaces for real estate information in the U.S. and a leading example of impactful machine learning.(The info above are referenced from https://www.kaggle.com/c/zillow-prize-1/data)
 In this project, based on data set which includes we are going to predict logerror of zillow price which is defined as the following:
 ```
 logerror = log(zestimate) - log(SalePrice)
