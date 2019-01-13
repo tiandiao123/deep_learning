@@ -30,7 +30,7 @@ In order to solve the problem above, we need to try several models, and choose t
 
 ### Metrics
 In this project, we set mean square error as our metrics, which is defined as the following:
-```
+```math
    Mean_squre_error = \sum_{1}^{n}{model(input_data) - logerror}/n
 ```
 In order to justify a good performance of our model in this case, we are going to try to find a mean square error <= 0.02 indicates a good model of this problem. 
