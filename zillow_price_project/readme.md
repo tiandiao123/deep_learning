@@ -7,10 +7,19 @@ Janunary 1st, 2019
 ## I. Review
 
 ### Project Overview
-In this project, we are going to predict logerror of zillow price which is defined as the following:
+Zillow’s Zestimate home valuation has shaken up the U.S. real estate industry since first released 11 years ago. “Zestimates” are estimated home values based on 7.5 million statistical and machine learning models that analyze hundreds of data points on each property. And, by continually improving the median margin of error (from 14% at the onset to 5% today), Zillow has since become established as one of the largest, most trusted marketplaces for real estate information in the U.S. and a leading example of impactful machine learning.
+In this project, based on data set which includes we are going to predict logerror of zillow price which is defined as the following:
 ![logerror](logerror.png)
 
-We have data set which has >= 50 columns of features and >= 90000 data samples, so we need to divide this data set into training data set and test data set so that we can train and test out model 
+We have data set which has >= 50 columns of features and >= 90000 data samples, so we need to divide this data set into training data set and test data set so that we can train and test out model. Here are data set we have(you can find them in my git repo):
+
+    properties_2016.csv - all the properties with their home features for 2016. Note: Some 2017 new properties don't have any data yet except for their parcelid's. Those data points should be populated when properties_2017.csv is available.
+    properties_2017.csv - all the properties with their home features for 2017 (released on 10/2/2017)
+    train_2016.csv - the training set with transactions from 1/1/2016 to 12/31/2016
+    train_2017.csv - the training set with transactions from 1/1/2017 to 9/15/2017 (released on 10/2/2017)
+    sample_submission.csv - a sample submission file in the correct format
+
+The reason why I think machine learning works is because out data set have many features, and we can create a regerssion model let the model predict best estimate which is close to actual values we have. 
 
 ### Problem Statement
 In order to solve the problem above, we need to try several models, and choose the best model to set it as our final solution. Before working on testing our model, clearing data is also important in this case, since we have much noise in our data set including missing data and some miss-calculated data. Then, firstly, we can try some simple regression models such as linear regression and polynomial regression, and use mean square error to see whether it has reasonable performance. After that, we can improve our model by using some more complex models such as decision/random regression tree algorithms. After that, adding normalization to avoid over-fitting is also important in this case. In order to avoid over-fiting, in addition to use some normal methods such as L1/L2 norms, we can try ensemble methods such as bagging, cross-validation method, adaboost and gradient-boosting algorithms to try! Finally, we find both of adabooting decision regression and gradient boosting tree regression algorithms can have good perforamance compared to pure regression algorithms such as decision regression algorithm. 
