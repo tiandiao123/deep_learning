@@ -82,7 +82,13 @@ For example, we can study correlations between finishedsquarefeet12 and other fe
 
 ![correlations3](hhg.png)
 
-From the picture above, we can see that almost all of the other featues have low correlations with finishedsquarefeet12, so we don't have to remove any other column feature if we keep finishedsquarefeet12 feature. If some feature has high correlations with finishedsquarefeet12, then we can remove those features having high correlations with finishedsquarefeet12. 
+After calculations, we find the following features have high correlations with 
+```
+calculatedfinishedsquarefeet : 0.9570383804488979
+calculatedbathnbr : 0.7667116758058886
+bathroomcnt : 0.7495820544775355
+```
+If some feature has high correlations with finishedsquarefeet12, then we can remove those features having high correlations with finishedsquarefeet12. In this case, we certainly can remove column features such as calculatedfinishedsquarefeet if we want to use column feature finishedsquarefeet12 in this case. 
 
 ### Algorithms and Techniques
 #### method 1: decision tree regression
