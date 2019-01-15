@@ -39,7 +39,18 @@ In order to justify a good performance of our model in this case, we are going t
 ## II. Analysis
 
 ### Data Exploration
-In this project, the data set is from a kaggle competition called zillow home value prediction, here is the [link](https://www.kaggle.com/c/zillow-prize-1/data). Also, after drawing the distribution of logerror of the data set, and we can find that data set's logerror looks like a guassian distribution if we normalize it. Also, if we divide these datas based on different month, and we can find that the data set is distributed mostly from March to September. As for training data of 2017, we have over 10000 data samples. Firstly, since the data sample has over 50 features, some of them are lacking huge amount of data. In this case we have two options, either we ignore those features who have huge amount of missing data, or we can just fill those missing data with mean value of the other unmissed data. In this project, we tried the second option, which means that we fill missing data with mean values of those unmissed data. Then, what we need to is that we explore the distribution of logerror we need to predict, and it turned out that it looks like a guassian function. After that, we want to study the correlations between every feature and logerror. That's because higher correlations indicate that feature is more related to or more influential to logerror predictions. If the correlation of some feature and logerror is near zero, it means that that feature has nealy no effects on out logerror predictions. Using this way, we can just igore those feactures having lower correlations, and use features having higher correlations to train out model, which can save a huge amount of time and increase model's performance in some cases. For example, finished square feet has high correlations, and it means we need to keep it in our training data. On the other hand, typeconstructiontypeid feature has low correlation, and it means that we can just ignore this feature when we need to train our model!  
+In this project, the data set is from a kaggle competition called zillow home value prediction, here is the [link](https://www.kaggle.com/c/zillow-prize-1/data). Also, after drawing the distribution of logerror of the data set, and we can find that data set's logerror looks like a guassian distribution if we normalize it. Also, if we divide these datas based on different month, and we can find that the data set is distributed mostly from March to September. As for training data of 2017, we have over 10000 data samples. Firstly, since the data sample has over 50 features, some of them are lacking huge amount of data. In this case we have two options, either we ignore those features who have huge amount of missing data, or we can just fill those missing data with mean value of the other unmissed data. In this project, we tried the second option, which means that we fill missing data with mean values of those unmissed data. Then, what we need to is that we explore the distribution of logerror we need to predict, and it turned out that it looks like a guassian function. After that, we want to study the correlations between every feature and logerror. That's because higher correlations indicate that feature is more related to or more influential to logerror predictions. If the correlation of some feature and logerror is near zero, it means that that feature has nealy no effects on out logerror predictions. Using this way, we can just igore those feactures having lower correlations, and use features having higher correlations to train out model, which can save a huge amount of time and increase model's performance in some cases. For example, finished square feet has high correlations, and it means we need to keep it in our training data. On the other hand, typeconstructiontypeid feature has low correlation, and it means that we can just ignore this feature when we need to train our model!
+
+Also, I diggged a little about the logerror we need to predict, and the max value of logerror is 0.5342337969890008, and the min value of logerror is -0.3198744301782, mean value is 0.01442724161915893, and std of it is 0.10523657921294056. Here is the code how I computed them:
+```
+print(max(train_df.logerror.values))
+print(min(train_df.logerror.values))
+mean_val = 0
+for ele in train_df.logerror.values:
+    mean_val += ele
+print(mean_val/len(train_df.logerror.values))
+print(np.std(train_df.logerror.values))
+```
 
 ### Exploratory Visualization
 Here is the logerror distribution figure:
@@ -48,9 +59,20 @@ Here is the logerror distribution figure:
 
 what we can learn from this picture is that we can know the general distribution of logerror we need to predict. We can see that it looks like a gausssian distribution if we normalize it. Also, most of logerror values are distribued between -0.2~0.2.
 
+Here is logerror distribution based on months:
+
+![month](month.png)
+
+what we can learn from it is that the logerror is distributed equally based on different months. Thus, at least we don't have to worry about unbalanced data with respect different month.  
+
+
 Here is correlations between features and logerror:
 
 ![correlations](correlations.png)
+
+Here is more visualized picture I drew based on the values I calculated
+
+![correlations2](hhh.png)
 
 From the picture above, we can have general ideas what kind of features are the most important ones, and what kinds of features we can just ignore them when training our model! Thus, we can know that the first several features such as finishedsquarefeet12, bedroomcnt are very important for our training model since it is highly correlated to our actual logerror we need to predict. However, some features such as unitcnt and typeconstructiontypeid are not very important to our training models since it has low correlations with our logerror, so we can ignore them whem training to save some training time!
 
