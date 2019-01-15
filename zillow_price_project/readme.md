@@ -7,19 +7,19 @@ Janunary 1st, 2019
 ## I. Review
 
 ### Project Overview
-Zillow’s Zestimate home valuation has shaken up the U.S. real estate industry since first released 11 years ago. “Zestimates” are estimated home values based on 7.5 million statistical and machine learning models that analyze hundreds of data points on each property. And, by continually improving the median margin of error (from 14% at the onset to 5% today), Zillow has since become established as one of the largest, most trusted marketplaces for real estate information in the U.S. and a leading example of impactful machine learning.(The info above are referenced from https://www.kaggle.com/c/zillow-prize-1/data)
+In my project, we are goint to zestimate and salesprice of house market of the united states. “Zestimates” are estimated home values based on 7.5 million statistical and machine learning models that analyze hundreds of data points on each property. And the sales price is the actual selling price of the house in the current market.
 In this project, based on data set which includes we are going to predict logerror of zillow price which is defined as the following:
 ```
 logerror = log(zestimate) - log(SalePrice)
 ```
-We have data set which has >= 50 columns of features and >= 90000 data samples, so we need to divide this data set into training data set and test data set so that we can train and test out model. Here are data set ![link](https://www.kaggle.com/c/zillow-prize-1/data) we have(you can find them in my git repo):
+We have data set which has >= 50 columns of features and >= 90000 data samples, so we need to divide this data set into training data set and test data set so that we can train and test out model. The training data is used to train our machine learning model, and the test data is used to test our machine learning to see whether this machine learning can be used to predict logerror of zillow price from those unseen test data set. If so, we can confirm our model reliability and robostness. Here are data set ![link](https://www.kaggle.com/c/zillow-prize-1/data) we have(you can find them in my git repo):
 ```
 properties_2016.csv - all the properties with their home features for 2016. Note: Some 2017 new properties don't have any data yet except for their parcelid's. Those data points should be populated when properties_2017.csv is available.
 properties_2017.csv - all the properties with their home features for 2017 (released on 10/2/2017)
 train_2016.csv - the training set with transactions from 1/1/2016 to 12/31/2016
 train_2017.csv - the training set with transactions from 1/1/2017 to 9/15/2017 (released on 10/2/2017)
 ```
-The reason why I think machine learning works is because out data set have many features, and we can create a regerssion model let the model predict best estimate which is close to actual values we have. 
+The reason why I think machine learning works is that machine learning algorithm such as linear regression and tree regression algorithm can be used to model this prediction and a regression problem. Based on regression model in machine learning, we are going to train a model to fit thes training data, and then test it in test data to see its performance.  
 
 ### Problem Statement
 In this problem, our input a large scale matrix (panda data frame) or numpy array which is transformed from our data set. As for every row of matrix, it represents a data sample, and every column represents a feature of data samples. The data type of data sample can be transformed into float when training our machine learning model. As for our output, we are going to predict the following logerror 
