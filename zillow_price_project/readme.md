@@ -76,6 +76,14 @@ Here is more visualized picture I drew based on the values I calculated
 
 From the picture above, we can have general ideas what kind of features are the most important ones, and what kinds of features we can just ignore them when training our model! Thus, we can know that the first several features such as finishedsquarefeet12, bedroomcnt are very important for our training model since it is highly correlated to our actual logerror we need to predict. However, some features such as unitcnt and typeconstructiontypeid are not very important to our training models since it has low correlations with our logerror, so we can ignore them whem training to save some training time!
 
+Also, we can compute correlations between different features(If two features have very low correlations, then it means these two features have similar properties, and we can just remove one of them to focus one of them. If so, we can save some training time)
+
+For example, we can study correlations between finishedsquarefeet12 and other features. Here is the result:
+
+![correlations3](hhg.png)
+
+From the picture above, we can see that almost all of the other featues have low correlations with finishedsquarefeet12, so we don't have to remove any other column feature if we keep finishedsquarefeet12 feature. If some feature has high correlations with finishedsquarefeet12, then we can remove those features having high correlations with finishedsquarefeet12. 
+
 ### Algorithms and Techniques
 #### method 1: decision tree regression
 In this method, we first try a simple algorithm called tree regression for predicting our logerror values. The decision tree algorithm starts with a root node, and involves partitioning the data into subsets that contain data samples with similar values. Thus, at every tree node, we need to set a threshold for deciding which suntree for current data to go. For picking threshold value, we normalize using such as mean values, or we can use cross-valiation method to find the best threshold values in our model. Finally, decision tree algorithm will choose the most optimized feature to decide which category we need to choose so that we can get the most desired predition. At the end, we set the max-depth as 20 since we have over 50 features, but we cut off those unrelated features based on correlations and leave only 18 features in our columns features. Finally, we got a mean square error which is 0.021273486707590866, which is not very satisficatory. But, it is a good start! Here is what looks like when I sample some test data and compare it with my model's predictions
