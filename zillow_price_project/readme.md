@@ -179,27 +179,49 @@ Then, we tried gradient boosting regerssion tree algorithm to see how it works c
 
 ### Model Evaluation and Validation
 As for all of algorithms, we tested them on our test data after training. As for tree regression algorithm, we have test mean square error 0.021273486707590866. As for adaboost+decision tree algorithm, we have mean square error 0.016951678638327763. As for gradient boosting algorithm, we have mean squre error 0.01599242456077152. 
-As for the model the roboustness, for example, we do add some outliers in our training model, and it turned out that adaboost regressiobn tree regression algorithm has strong tolerance for those noise data. Overall, it can still help us achieve good performance compared to pure simple tree regression algorithm. Also, I used cross-validation method to test our gradient boosting regression model, we get the average mean square error 0.0019 which satisties our requirement, and it also can prove our model is robust in this case.  
+As for the model the roboustness, for example, we do add some outliers in our training model, and it turned out that adaboost regressiobn tree regression algorithm has strong tolerance for those noise data. Overall, it can still help us achieve good performance compared to pure simple tree regression algorithm. Also, I used cross-validation method to test our gradient boosting regression model, we get the average mean square error 0.0019 which satisties our requirement, and it also can prove our model is robust in this case. Here are cross-validarion result:
+```
+current mean == 0.002140589616206769
+current mean == 0.002029173966014433
+current mean == 0.002008536622792608
+current mean == 0.0019443885479634208
+current mean == 0.0017347878367147082
+current mean == 0.001950712651191539
+current mean == 0.0018337416870197987
+current mean == 0.0016234681985008049
+current mean == 0.001869138581318882
+current mean == 0.0020920371714845125
+we split traing data into 10 parts, and the average mean is 0.0019226574879207474
+
+```
 
 
 
 ### Justification
-Overall, we achive the benchmark we set in the begining, and it means that our model can make test data's mean squre error smaller than 0.02. After drawing some predicted pictures for our test data, we can confirm our benchmark is reasonale, and our model is very strong and robust.   
+Overall, we achive the benchmark we set in the begining, and it means that our model can make test data's mean squre error smaller than 0.02. After drawing some predicted pictures for our test data, we can confirm our benchmark is reasonale, and our model is very strong and robust. Here are a table to show (the last column is the mse of test data):
+
+![benchmark](benchmark.png) 
 
 
 ## V. Conclusion
 
 ### free-from visualization
 Here are predicted results' of some of data sample ramdomly selected from test data set. The first figure is tree regression algorithm's performance, and the second picture is the result of adaboost tree regression algorithm, and the third picture is gradient boosting tree regression algorithm's performance.  
+The following pictures' x axis just the data samples' indexes, and y-axis is the logerror. Also, the blue dot represents predcited logerror by model, and the green triangle represents actual logerror.
+The first picture is the predicted result of regression tree model 
+![reg1](reg1.png)
 
-![decison_tree](figure1.png)
+The second picture shows result of adaboost regession tree model
+![reg2](reg2.png)
 
-![decison_tree_adaboost](figure2.png)
+The third picture shows the result of gradient boosting regression tree model
+![ggm](ggm.png)
 
-![gradient_boosting](figure3.png)
+Here is a more detailed table to show test data mse (test data and training data are the same for all of models)
+![benchmark](benchmark.png) 
 
 ### Reflection
-In this project, the most difficult part for me is that we don't have any clue which algorithm to choose. Thus, we need to try multiple optential algorithms to test, abd see which algorithm should have best performance. Also, since it is a pure regression problem, so we cannot use some accuracy benchmark to determine whether this algorithm has good performance. The only thing we can do is that we try to minize cost function error(mean squre error we chose in this project), and draw figure to see whether our model has better performance. Also adjusting parameters of the algorithms is also challenging for us since some parameters huge impacts on out model's performance such as learning rate in tree regression algorithm. 
+In this project, the most difficult part for me is that we don't have any clue which algorithm to choose. Thus, we need to try multiple optential algorithms to test, abd see which algorithm should have best performance. Also, trying to refine algorithms is also a chanlenging part for me since some slightly change such as the change of n_estimator and the change of max-depth can have significantly impacts on the final result. Thus, we need to gradually change parameters to see how some parameters will impact on the final result! 
 
 ### Improvement
 After that, we can probably do the following steps to improve our problem. 
