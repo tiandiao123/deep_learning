@@ -179,18 +179,18 @@ Then, we tried gradient boosting regerssion tree algorithm to see how it works c
 
 ### Model Evaluation and Validation
 As for all of algorithms, we tested them on our test data after training. As for tree regression algorithm, we have test mean square error 0.021273486707590866. As for adaboost+decision tree algorithm, we have mean square error 0.016951678638327763. As for gradient boosting algorithm, we have mean squre error 0.01599242456077152. 
-As for the model the roboustness, for example, we do add some outliers in our training model, and it turned out that adaboost regressiobn tree regression algorithm has strong tolerance for those noise data. Overall, it can still help us achieve good performance compared to pure simple tree regression algorithm. Also, I used cross-validation method to test our gradient boosting regression model, we get the average mean square error 0.0019 which satisties our requirement, and it also can prove our model is robust in this case. Here are cross-validarion result:
+As for the model the roboustness, for example, we do add some outliers in our training model, and it turned out that adaboost regressiobn tree regression algorithm has strong tolerance for those noise data. Overall, it can still help us achieve good performance compared to pure simple tree regression algorithm. Also, I used cross-validation method to test our gradient boosting regression model, we get the average mean square error 0.0019 which satisties our requirement, and it also can prove our model is robust in this case. Here are cross-validarion result based on different splitting point:
 ```
-current mean == 0.002140589616206769
-current mean == 0.002029173966014433
-current mean == 0.002008536622792608
-current mean == 0.0019443885479634208
-current mean == 0.0017347878367147082
-current mean == 0.001950712651191539
-current mean == 0.0018337416870197987
-current mean == 0.0016234681985008049
-current mean == 0.001869138581318882
-current mean == 0.0020920371714845125
+mean1 == 0.002140589616206769
+mean2 == 0.002029173966014433
+mean3 == 0.002008536622792608
+mean4 == 0.0019443885479634208
+mean5 == 0.0017347878367147082
+mean6 == 0.001950712651191539
+mean7 == 0.0018337416870197987
+mean8 == 0.0016234681985008049
+mean9 == 0.001869138581318882
+mean10 == 0.0020920371714845125
 we split traing data into 10 parts, and the average mean is 0.0019226574879207474
 
 ```
