@@ -111,7 +111,7 @@ As for data processing, as we talked above, firstly, we need to find all of feat
 
 
 ### Implementation
-As for my implementation, we firstly implemented a decision tree regression algorithm. We use mean square error defined above to view our cost fucntion so that we can train our model. This algorithm is very simple, but the main difficult is that it is hard to choose threshold values for those tree nodes to partition our tree. In my case, I use mean values as the threshold values in every tree node. Then I tried cross-valiation method to choose best threshold for confirming my algorithm. After that, I also use sklearn libaray to train our training data, and compare it with my implementation. I find that sklearn tree regression decision tree algorithm has better result, and it shrinks my mean square error from 0.05 into 0.022 approxiamately. Here is core codes for training our model for simple tree regression algorithm:
+I used sklearn libaray to train our training data, and compare it with my implementation. I find that sklearn tree regression decision tree algorithm has better result if I choose max-depth as 20, and it shrinks my mean square error from 0.05 into 0.022 approxiamately. Here is core codes for training our model for simple tree regression algorithm:
 ```
 from sklearn.tree import DecisionTreeRegressor
 from sklearn.ensemble import AdaBoostRegressor
@@ -127,26 +127,60 @@ regr_2 = AdaBoostRegressor(DecisionTreeRegressor(max_depth=20),
 regr_2.fit(X_train, y_train)                          
 
 ```  
-Also, we need to adjsut the max-depth, and the number of n_estimators, we find that we can get the best result if we set the value of n_estimators as 30, and the number of max-depth as 20. If we increase max_depth, it will be over-fitting in our case. The best performance of adaboost regression tree algrithms can help us get 0.015 mse. 
-
-Finally, we tried gradient boosting algorithm, similar to adaboost algorithm, we need to adjsut max-depth and n_estimator. Actuallym, it can get similar performance to adaboost. Here is core code for gradient boosting algorithm:
+Also, we need to adjsut the max-depth, and the number of n_estimators, we find that we can get the best result if we set the value of n_estimators as 100, and the number of max-depth as 25. If we increase max_depth, it will be no obious improvement or have some over-fitting problem in our case. Originally, I tried several different parameters such as max-depth and n_estimators. Originally, I was thinkging we could get the best performance when n_estimatores == 30 and the max-depth==25, but it turned out that I was wrong (I didn't continue to increase the number of n_estimator). However, after I changed n_estimator from 20 to 100, I found I can significantly improve the performance of the model. If I continue to increase the n_estimator, I found the mse has no obious changes. The best performance of adaboost regression tree algrithms can help us get 0.0021 mse.  
+Here is core code for gradient boosting algorithm:
 ```
 model = GradientBoostingRegressor(n_estimators = 10, learning_rate=0.01, max_depth=20, random_state=0, loss='ls')
 model.fit(X_train, y_train)
 ```
 
+In addition to it, I also tried cross-validation to adjust roboustness of my model, I found that our gradient boosting regression tree model has strong robust since we can get average mse 0.002 which satifies our requirement very well. Here are how I implemented:
+```
+### cross-validation to test our model
+from sklearn.model_selection import cross_val_score
+from sklearn.model_selection import KFold
+model = GradientBoostingRegressor(n_estimators = 100, learning_rate=0.01, max_depth=25, random_state=0, loss='ls')
+mean = 0
+K = 10
+for i in range(10):
+    indexes = np.array(len(train_df)*[0])
+    if i!=9:        
+        X_train, X_test = train_df[int(((i+1)/10)*len(train_df)):len(train_df)], train_df[int((i/10)*len(train_df)):int(((i+1)/10)*len(train_df))]
+        y_train, y_test = train_y[int(((i+1)/10)*len(train_df)):len(train_df)], train_y[int((i/10)*len(train_df)):int(((i+1)/10)*len(train_df))]
+    else:
+        X_train, X_test = train_df[0:int(0.9*len(train_df))], train_df[int(0.9*len(train_df)): len(train_df)]
+        y_train, y_test = train_y[0:int(0.9*len(train_df))], train_y[int(0.9*len(train_df)): len(train_df)]
+    
+    
+        
+        
+    model.fit(X_train, y_train)
+    cur_mean = mean_squared_error(y_test, model.predict(X_test))
+    print("current mean == {}".format(cur_mean))
+    mean += cur_mean
+print("we split traing data into {} parts, and the average mean is {}".format(length, mean/K))
+
+```
+
 ### Refinement
-In this project, we firstly tried several simple regression algorithms such as linear regression, polynomial regression, support vector regression and decision tree regression, and we find that most of them don't satisfy our requirements. For one thing, they have very high test mean square error, and the predicted results don't match with logerror we need to predict! There are several reasons why they don't work very well. As for linear regression, the algorithm model complexity is very small, and we won't be able to use it to resolve some complex data set in this case. As for polynomial regression, in some sense, it can solve some disadvantages of linear regression, but it has huge disadvantage which is that it can be over-fitting. Thus, even we can have low training mean square error, but it is hard to control the model's degree to avoid overfitting. Thus, the flexibility of polynomial is that great! As for support vector regression, it has some limitaions. In this project, it doesn't have very obvious hyper-plane to divide data set, so it doesn't have good result in this case. Probably, we can try kernerl SVR, but we didn't try it. As for decision tree regression, since it can be used to work out in this project, and it does have good performance, but we couldn'ty make it satisfy our requirement no matter how to set parameters such as max-depth, learning rate. Then, we consider about add adaboost and gradient boosting to improve pure regression algorithm. Since tree regression algorithm has best performance among all of regression algorithms we tried, so we decide to add adaboost and gradient boosting algorithm on tree regression algorithm. It turned out that we improved tree regression algorithm's performance after adding ensemble method. As for adaboost algorithm, it balances between different models so that we can get the best model! In addition to adaboost algorithm, we also tried gradient algrithm, the basical idea behind this is that we continue to update our bad model into a better model, and we continue to improve our model until it satisfies some threshold we set! Using this ensemble method, not only it can improve our model's performance, but it also can avoid over-fitting, which can decrease test mean squre error to below 0.02, and it turned out that ensemble methods such as graident boosting and adaboost can help us realize the target! 
+In this project, At the most of time I tried many algorithms including tree regression model, adaboost tree regression model, gradient boosting regession model, and then we have cross-validation to test my models' rosbustness. As for tree regession model, at the most of time, we need to focus on which column features to train, and what value of max-depth we need to set for this model. At the begining, we just include all of featuers into my traning data, and focus on how to adjust max-depth so that we can have bettwe performance. Thus, initially, I set max-depth as 5, and then it turned out that this value 5 is bad choice since our mean squared error is 0.5 which is not that good. Also, after drawing some predicted pictures, we find that most of test data's predicted logerror are far away from actual logerror. Thus, I graudally increase the number of max-depth into 10, 15, 20 and 25. Then, we find that when max-depth == 20 and 25, we can get very good result, and we have mse 8e-8. And we have picture below:
 
-As for paramenter tuning, we mostly focus on the max-depth and the number of features we need to use. At the begining, we just consider all of features for training our tree regression algorithms inclusing adaboosting tree regression algorithm. Howerver, we find that some features have hugue amount noise data which will divert our training of the model. Also, some features have low corelations with our target values calles logerror values, thus it will waste a lot of time if we keep them in our traning. Thus, we decide to remove some uncorrelated features in our data set. After that we find the performance has been improved. For example, the mean squre error for tree regression algorithm has decreased from 0.03 into 0.02. Also, originally, we use set max-depth as 50, which cost a lot of time to train. We find that it has over-fitting phenomenon. Then, we gradually decrease the number of max-depth, and find that max-depth == 20 gives us the best perfomance. Thus, I assume that max-depth == 20 is ideal for our model.
+![reg1](reg1.png)
 
+Then, we are going to use adaboost algroithm to refine our previous model regression tree algorithm. Firstly, we need to study how to set n_estimator and max-depth. Under the fixed n_estimator, we tried max-depth 5, 10, 15, 20, 25, 30 and 35, and it turned out that the mean sqaure error has no obious changes when max-depth>=20. Thus, we fix max-depth==20, and adjust n_estimator. Originally, I set n_estimator as 30, and it will help us get mse 0.016. Howerver, if I changed n_estimator from 30 into 60, 80, 100, 120. We find that we can get a strong model when n_estimator==100, and the mse can be 1.05e-8. Here are some randomly selected data samples predicted by this model:
+
+![reg2](reg2.png)
+
+Then, we tried gradient boosting regerssion tree algorithm to see how it works compared to other methods we tried. First of all, we only use featues with high correlations with logerror to train, and it turned out that we can get mse error 0.016 even we set the number of n_estimator as 100, but the result is not as good as adaboost algorithm. Then, we add more featues (up to 30 features), things get better since we can decrease mse error. Now, when we use 45 most important features (having high correlations with logerror), we can decrease mse into around 0.002. Even though the mse error is not as good as adaboost, but it still satisfied our expectation. Here is several pictures to show some predicted result:
+
+![ggm](ggm.png)
 
 ## IV. Results
 
 ### Model Evaluation and Validation
 As for all of algorithms, we tested them on our test data after training. As for tree regression algorithm, we have test mean square error 0.021273486707590866. As for adaboost+decision tree algorithm, we have mean square error 0.016951678638327763. As for gradient boosting algorithm, we have mean squre error 0.01599242456077152. 
+As for the model the roboustness, for example, we do add some outliers in our training model, and it turned out that adaboost regressiobn tree regression algorithm has strong tolerance for those noise data. Overall, it can still help us achieve good performance compared to pure simple tree regression algorithm. Also, I used cross-validation method to test our gradient boosting regression model, we get the average mean square error 0.0019 which satisties our requirement, and it also can prove our model is robust in this case.  
 
-As for the model the roboustness, for example, we do add some outliers in our training model, and it turned out that adaboost regressiobn tree regression algorithm has strong tolerance for those noise data. Overall, it can still help us achieve good performance compared to pure simple tree regression algorithm
 
 
 ### Justification
@@ -170,6 +204,6 @@ In this project, the most difficult part for me is that we don't have any clue w
 ### Improvement
 After that, we can probably do the following steps to improve our problem. 
 option 1: try modern algorithm such as Xgboost whcih is a modern boosting algorithm, and we can use it to improve our model's performance
-Option 2: we can try neural network to work on this regression problem. Just view features of data sample as input nodes of our fully-connected neural network, and the throw all of data into the nueral network to try our model. 
-Option 3: Add more training data is also a good choice, since our data we use has many missing data, so we cannot guaranteen the realiability of data we use. Thus, before training, we can do some data augumentation or adding more data should be beneficial our training of models!
-Option 4: Add more ensemble algorithms to our model should also be working! For example, combining bagging and adaboost should also improve the performance since we randomly select training data can increase our model's flexibility, and so it can help us get a more genralized model. If so, it can used to predict unseen data with more accuracy! 
+Option 2: we can try neural network to work on this regression problem. Just view features of data sample as input nodes of our fully-connected neural network, and then throw all of data into the nueral network to try our model. 
+Option 3: Add more training data is also a good choice, since our data we use has many missing data, so we cannot guaranteen the realiability of data we use. Thus, before training, we can do some data augumentation or adding more data, which should be beneficial our training of models!
+Option 4: Add more ensemble algorithms to our model should also be working! For example, combining bagging and adaboost should also improve the performance since we randomly select training data can increase our model's flexibility, and so it can help us get a more generalized model. If so, it can be used to predict unseen data with more accuracy!
