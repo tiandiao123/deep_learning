@@ -51,6 +51,18 @@ for ele in train_df.logerror.values:
 print(mean_val/len(train_df.logerror.values))
 print(np.std(train_df.logerror.values))
 ```
+Also, we digged into some key features of these training data, and we find that the folowing features are the most important ones based on correlations we just calculated:
+```
+finishedsquarefeet12 : 0.04458437654847187
+calculatedfinishedsquarefeet : 0.04009675106018118
+bedroomcnt : 0.033205392488781
+calculatedbathnbr : 0.028883533452357654
+bathroomcnt : 0.027065219063879202
+fullbathcnt : 0.026391321986994426
+```  
+Then, we create the following table to show it min, max, mean and std values of their own. So, here is the table:
+
+![123456](123.png)
 
 ### Exploratory Visualization
 Here is the logerror distribution figure:
@@ -179,7 +191,7 @@ Then, we tried gradient boosting regerssion tree algorithm to see how it works c
 
 ### Model Evaluation and Validation
 As for all of algorithms, we tested them on our test data after training. As for tree regression algorithm, we have test mean square error 0.021273486707590866. As for adaboost+decision tree algorithm, we have mean square error 0.016951678638327763. As for gradient boosting algorithm, we have mean squre error 0.01599242456077152. 
-As for the model the roboustness, for example, we do add some outliers in our training model, and it turned out that adaboost regressiobn tree regression algorithm has strong tolerance for those noise data. Overall, it can still help us achieve good performance compared to pure simple tree regression algorithm. Also, I used cross-validation method to test our gradient boosting regression model, we get the average mean square error 0.0019 which satisties our requirement, and it also can prove our model is robust in this case. Here are cross-validarion result based on different splitting point:
+As for the model the roboustness, for example, we do add some outliers in our training model, and it turned out that adaboost regressiobn tree regression algorithm has strong tolerance for those noise data. Overall, it can still help us achieve good performance compared to pure simple tree regression algorithm. Also, I used cross-validation method to test our gradient boosting regression model, we get the average mean square error 0.0019 which satisties our requirement, and it also can prove our model is robust in this case. Here are cross-validarion mse result based on different splitting point:
 ```
 mean1 == 0.002140589616206769
 mean2 == 0.002029173966014433
