@@ -233,7 +233,7 @@ Here is a more detailed table to show test data mse (test data and training data
 ![benchmark](benchmark.png) 
 
 ### Reflection
-In this project, the most difficult part for me is that we don't have any clue which algorithm to choose. Thus, we need to try multiple optential algorithms to test, abd see which algorithm should have best performance. Also, trying to refine algorithms is also a chanlenging part for me since some slightly change such as the change of n_estimator and the change of max-depth can have significantly impacts on the final result. Thus, we need to gradually change parameters to see how some parameters will impact on the final result! 
+In this project, the whole approach for this project is that we need to gradually adjust parameters to let our regression model to fit with training data better. The hardest part is that how to choose adequate parameters to adjust it. Here is more specific example, when I was adjusting my gradient boosting algorithm, I found that it is really hard to get a desired result no matter how I adjust parameters such as n_estimator and max-depth. Then, I figured out a way. Firstly, we need to fix a parameter value such as max-depth==20, then we gradually increase the number of n_estimator from 20 into 150. We need to find that how the changing of n_estimator will have effects on the final performance of the model. We can find that as the number of n_estimator increases, the performance of gradident boosting model will improve until n_estimator>=100. Howerver, this approach is very time-consuming, so I still need to figure out a more efficient way to adjust model's paremeters later on. 
 
 ### Improvement
 After that, we can probably do the following steps to improve our problem. 
