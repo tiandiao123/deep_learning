@@ -25,9 +25,9 @@
   
   In this project, I implemented a WGAN to generate human faces, and it is an improved version of DCGAN project (previous face generation project)
 
-* [Quadrotor Helicopter](https://github.com/tiandiao123/deep_learning/tree/master/RL-Quadcopter-2)
+* [Pix2PixHD model for style transfer](https://github.com/tiandiao123/Pix2PixHD-TensorFlow)
 
-  In this project, I am going to use RL algorithms to let Helicopter fly by itself.
+  I implemented a Pix2Pix HD model for style transfer, that is transferring a image from one style to another style. Howerver, my impelmentation is highly correlated with the data set I use, so you need to change data pipeline by yourself so that that model can be applied into your project. 
 
 ### Tutorials
 
