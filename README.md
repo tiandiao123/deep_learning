@@ -1,6 +1,3 @@
-### Student Name: Cuiqing Li
-### starting time: December 2017
-
 # Deep Learning Project
 
 
